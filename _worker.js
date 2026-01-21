@@ -1640,8 +1640,17 @@ const HTML = `<!DOCTYPE html>
         .filter-row { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
         @media (min-width: 640px) { .filter-row { flex-direction: row; align-items: center; } }
         .search-box { width: 100%; max-width: 250px; }
-        .filter-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; align-items: center; flex: 1; }
-        .filter-chip { position: relative; padding: 4px 12px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-dim); transition: all 0.2s; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); overflow: hidden; flex-shrink: 0; }
+        .filter-bar-wrapper { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; overflow: hidden; }
+        .fixed-tags { display: flex; gap: 8px; flex-shrink: 0; }
+        .scroll-tags { flex: 1; min-width: 0; position: relative; }
+        .filter-bar-view { display: flex; gap: 8px; align-items: center; padding-bottom: 0 !important; }
+        .tag-scrollbar .el-scrollbar__bar { display: none !important; }
+        .tag-scroll-wrap { scrollbar-width: none !important; -ms-overflow-style: none !important; }
+        .tag-scroll-wrap::-webkit-scrollbar { display: none !important; width: 0 !important; height: 0 !important; }
+        .scroll-controls { display: flex; gap: 2px; flex-shrink: 0; margin-left: 4px; }
+        .btn-scroll { cursor: pointer; display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; background: var(--bg-body); border: 1px solid var(--border); color: var(--text-dim); border-radius: 4px; transition: all 0.2s; }
+        .btn-scroll:hover { background: #2563eb; color: #fff; border-color: #2563eb; }
+        .filter-chip { position: relative; padding: 4px 12px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: var(--bg-body); color: var(--text-dim); transition: all 0.2s; clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px); overflow: hidden; flex-shrink: 0; white-space: nowrap; }
         .filter-chip.active { background: #2563eb; color: white; border-color: #2563eb; }
         .tag-count-badge { display: inline-flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.1); border-radius: 4px; padding: 0 4px; margin-left: 6px; font-size: 10px; height: 16px; font-family: 'JetBrains Mono', monospace; }
         html.dark .tag-count-badge { background: rgba(255,255,255,0.1); color: #fff; }
@@ -1859,10 +1868,31 @@ const HTML = `<!DOCTYPE html>
 
                 <div class="filter-row" v-if="list.length > 0">
                     <div class="search-box"><el-input v-model="searchKeyword" :placeholder="t('searchPlaceholder')" clearable :prefix-icon="Search"></el-input></div>
-                    <div class="filter-bar" v-if="allTags.length > 0">
-                        <div class="filter-chip" :class="{active:currentTag===''}" @click="currentTag=''">{{ t('tagAll') }}<div v-if="currentTag===''" class="chip-active-bar"></div></div>
-                        <div class="filter-chip" :class="{active:currentTag==='DISABLED'}" @click="currentTag='DISABLED'">{{ t('disabledFilter') }}<span class="tag-count-badge">{{ disabledCount }}</span><div v-if="currentTag==='DISABLED'" class="chip-active-bar"></div></div>
-                        <div class="filter-chip" v-for="tag in allTags" :key="tag" :class="{active:currentTag===tag}" @click="currentTag=tag">{{ tag }} <span class="tag-count-badge">{{ getTagCount(tag) }}</span><div v-if="currentTag===tag" class="chip-active-bar"></div></div>
+                    <div class="filter-bar-wrapper" v-if="allTags.length > 0">
+                        <!-- Fixed Tags -->
+                        <div class="fixed-tags">
+                            <div class="filter-chip" :class="{active:currentTag===''}" @click="currentTag=''">{{ t('tagAll') }}<div v-if="currentTag===''" class="chip-active-bar"></div></div>
+                            <div class="filter-chip" :class="{active:currentTag==='DISABLED'}" @click="currentTag='DISABLED'">{{ t('disabledFilter') }}<span class="tag-count-badge">{{ disabledCount }}</span><div v-if="currentTag==='DISABLED'" class="chip-active-bar"></div></div>
+                        </div>
+
+                        <!-- Scrollable Tags -->
+                        <div class="scroll-tags">
+                            <el-scrollbar ref="tagScrollbar" class="tag-scrollbar" view-class="filter-bar-view" wrap-class="tag-scroll-wrap" :wrap-style="[{'scrollbar-width':'none', '-ms-overflow-style':'none', 'padding-bottom':'0'}]">
+                                <div class="flex gap-2">
+                                    <div class="filter-chip" v-for="tag in allTags" :key="tag" :class="{active:currentTag===tag}" @click="currentTag=tag">{{ tag }} <span class="tag-count-badge">{{ getTagCount(tag) }}</span><div v-if="currentTag===tag" class="chip-active-bar"></div></div>
+                                </div>
+                            </el-scrollbar>
+                        </div>
+                        
+                        <!-- Scroll Controls -->
+                         <div class="scroll-controls">
+                            <div class="btn-scroll" @click="scrollTags(-1)">
+                                <el-icon><Arrow-Left /></el-icon>
+                            </div>
+                            <div class="btn-scroll" @click="scrollTags(1)">
+                                <el-icon><Arrow-Right /></el-icon>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -4562,6 +4592,16 @@ const HTML = `<!DOCTYPE html>
                 watch([currentTag, searchKeyword], () => {
                     currentPage.value = 1;
                 });
+
+                const tagScrollbar = ref(null);
+                const scrollTags = (direction) => {
+                    if (!tagScrollbar.value) return;
+                    const wrap = tagScrollbar.value.wrapRef;
+                    if (wrap) {
+                        const scrollAmount = 150;
+                        wrap.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                    }
+                };
                 
                 // Initialize selectedMonth to the latest month when data is available
                 watch(() => spendingStats.value, (stats) => {
@@ -4630,7 +4670,8 @@ const HTML = `<!DOCTYPE html>
                     historyDialogVisible, currentHistoryItem, historyPage, historyPageSize, pagedHistory, openHistory, saveHistoryInfo, addHistoryRecord, removeHistoryRecord, historyStats, exchangeRates, ratesLoading,
                     addHistoryDialogVisible, addHistoryForm, submitAddHistory,
                     editingHistoryIndex, tempHistoryItem, startEditHistory, saveEditHistory, cancelEditHistory, submitting, currentRenewItem,
-                    getSummaries, expiringTotal, expiredTotal, totalAmount
+                    getSummaries, expiringTotal, expiredTotal, totalAmount,
+                    tagScrollbar, scrollTags, ArrowLeft: ElementPlusIconsVue.ArrowLeft, ArrowRight: ElementPlusIconsVue.ArrowRight
                 };
             }
         });
