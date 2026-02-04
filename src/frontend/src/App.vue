@@ -6,12 +6,30 @@ import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import en from 'element-plus/es/locale/lang/en';
 
 // 图标解构
-const { Edit, Delete, Plus, VideoPlay, Setting, Bell, Document, Lock, Monitor, SwitchButton, Calendar, Timer, Files, AlarmClock, Warning, Search, Cpu, Upload, Download, Link, Connection, Message, Promotion, Iphone, Moon, Sunny, RefreshRight, More, ArrowDown, Tickets, Sort, ArrowLeft, ArrowRight, InfoFilled, Close, Coin, Position, Notification, Comment } = ElementPlusIconsVue;
+const { Edit, Delete, Plus, VideoPlay, Setting, Bell, Document, Lock, Monitor, SwitchButton, Calendar, Timer, Files, AlarmClock, Warning, Search, Cpu, Upload, Download, Link, Connection, Message, Promotion, Iphone, Moon, Sunny, RefreshRight, More, ArrowDown, Tickets, Sort, ArrowLeft, ArrowRight, InfoFilled, Close, Coin, Position, Notification, Comment, SuccessFilled, WarningFilled } = ElementPlusIconsVue;
 
 // Element Plus 语言包
 const ZhCn = zhCn;
 const ElementPlusLocaleEn = en;
 const Money = Coin;
+
+// =================================================================================
+// [用户配置区] 默认汇率兜底配置 (API 请求失败时使用)
+// 基准币种 (请确保此币种在下方的汇率表中值为 1)
+const FALLBACK_BASE = 'CNY';
+// 汇率表 (1 基准币种 = 多少目标币种)
+const FALLBACK_RATES = {
+    'CNY': 1,
+    'USD': 0.14413,
+    'EUR': 0.12213,
+    'GBP': 0.10532,
+    'HKD': 1.1261,
+    'JPY': 22.463,
+    'SGD': 0.18313,
+    'MYR': 0.56679,
+    'KRW': 208.78
+};
+// =================================================================================
 
         const frontendCalc = {
             l2s(l) {
@@ -62,7 +80,7 @@ const Money = Coin;
             lblTopic: '主题 (Topic)',readOnly: '只读',
             lblNotifyTime: '提醒时间', btnResetToken: '重置令牌',
             lblHeaders: '请求头 (JSON)', lblBody: '消息体 (JSON)',
-            tag:{alert:'触发提醒',renew:'自动续期',disable:'自动禁用',normal:'检查正常'},tagLatest:'最新',tagAuto:'自动',tagManual:'手动',msg:{confirmRenew: '确认将 [%s] 的更新日期设置为今天吗？',renewSuccess: '续期成功！日期已更新: %s -> %t',tokenReset: '令牌已重置，请更新订阅地址', copyOk: '链接已复制', exportSuccess: '备份已下载',importSuccess: '数据恢复成功，即将刷新',importFail: '导入失败，请检查文件格式',passReq:'请输入密码',saved:'保存成功',saveFail:'保存失败',cleared:'已清空',clearFail:'清空失败',loginFail:'验证失败',loadLogFail:'日志加载失败',confirmDel:'确认删除此项目?',dateError:'上次更新日期不能早于创建日期',nameReq:'服务名称不能为空',nameExist:'服务名称已存在',futureError:'上次续期不能是未来时间',serviceDisabled:'服务已停用',serviceEnabled:'服务已启用',execFinish: '执行完毕!'},tags:'标签',tagPlaceholder:'输入标签回车创建',searchPlaceholder:'搜索标题或备注...',tagsCol:'标签',tagAll:'全部',useLunar:'农历周期',lunarTip:'按农历日期计算周期',yes:'是',no:'否',timezone:'偏好时区',disabledFilter:'已停用',policyConfig:'自动化策略',policyNotify:'提醒提前期',policyAuto:'自动续期',policyRenewDay:'过期续期天数',useGlobal:'全局默认',autoRenewOnDesc:'过期自动续期',autoRenewOffDesc:'过期自动禁用',previewCalc:'根据上次续期日期和周期计算',nextDue:'下次到期',
+            tag:{alert:'触发提醒',renew:'自动续期',disable:'自动禁用',normal:'检查正常'},tagLatest:'最新',tagAuto:'自动',tagManual:'手动',msg:{confirmRenew: '确认将 [%s] 的更新日期设置为今天吗？',renewSuccess: '续期成功！日期已更新: %s -> %t',tokenReset: '令牌已重置，请更新订阅地址', copyOk: '链接已复制', exportSuccess: '备份已下载',importSuccess: '数据恢复成功，即将刷新',importFail: '导入失败，请检查文件格式',passReq:'请输入密码',saved:'保存成功',saveFail:'保存失败',cleared:'已清空',clearFail:'清空失败',loginFail:'验证失败',loadLogFail:'日志加载失败',confirmDel:'确认删除此项目?',dateError:'上次更新日期不能早于创建日期',nameReq:'服务名称不能为空',nameExist:'服务名称已存在',futureError:'上次续期不能是未来时间',serviceDisabled:'服务已停用',serviceEnabled:'服务已启用',execFinish: '执行完毕!', rateFallback:'API请求失败，已使用默认汇率'},tags:'标签',tagPlaceholder:'输入标签回车创建',searchPlaceholder:'搜索标题或备注...',tagsCol:'标签',tagAll:'全部',useLunar:'农历周期',lunarTip:'按农历日期计算周期',yes:'是',no:'否',timezone:'偏好时区',disabledFilter:'已停用',policyConfig:'自动化策略',policyNotify:'提醒提前期',policyAuto:'自动续期',policyRenewDay:'过期续期天数',useGlobal:'全局默认',autoRenewOnDesc:'过期自动续期',autoRenewOffDesc:'过期自动禁用',previewCalc:'根据上次续期日期和周期计算',nextDue:'下次到期',
             fixedPrice:'账单额',currency:'币种',defaultCurrency:'默认币种',history:'历史记录',historyTitle:'续费历史',totalCost:'总花费',totalCount:'续费次数',renewDate:'操作日期',billPeriod:'账单周期',startDate:'开始日期',endDate:'结束日期',actualPrice:'实付金额',notePlaceholder:'可选备注...',btnAddHist:'补录历史',modify:'修改渠道',confirmDelHist:'删除此记录?',opDate:'操作日',amount:'金额',period:'周期',spendingDashboard:'花销看板',monthlyBreakdown:'月度明细',total:'总计',count:'笔',growth:'环比',currMonth:'本月',avgMonthlyLabel:'月均支出',itemDetails:'项目明细',noData:'暂无数据',predictedTag:'预测',last12M:'最近12个月', lblPushTitle:'自定义标题', pushTitle:'RenewHelper 报告',
             addChannel: '添加渠道', noChannels: '暂无推送渠道，请点击右上角添加。', modifyChannel: '配置渠道', channelType: '渠道类型', channelName: '渠道名称 (备注)', selectChannels: '选择推送渠道 (留空则默认推送所有)'},
             en: { upcomingBillsDays:'Pending Reminder', upcomingBills: '%s Days Pending', viewSwitch:'VIEW SWITCH',viewProjects:'PROJECTS',viewSpending:'DASHBOARD',annualSummary:'Annual Summary',monthlyTrend:'Monthly Trend',noSpendingData:'No Spending Data',billAmount:'BILL AMOUNT',opSpending:'ACTUAL COST', avgMonthly:'AVG', avgMonthlyLabel:'AVG MONTHLY', filter:{expired:'Overdue/Today', w7:'Within %s Days', w30:'Within 30 Days', future:'Future(>30d)', new:'New (<30d)', stable:'Stable (1m-1y)', long:'Long Term (>1y)', m1:'Last Month', m6:'Last 6 Months', year:'This Year', earlier:'Earlier'}, secPref: 'PREFERENCES',manualRenew: 'Quick Renew',tipToggle: 'Toggle Status',tipRenew: 'Quick Renew',tipEdit: 'Edit Service',tipDelete: 'Delete Service',tipDeleteCh: 'Delete Channel',secNotify: 'NOTIFICATIONS',secData: 'DATA MANAGEMENT',lblIcsTitle: 'CALENDAR SUBSCRIPTION',lblIcsUrl: 'ICS URL (iOS/Google Calendar)',btnCopy: 'COPY',btnResetToken: 'RESET TOKEN',loginTitle:'SYSTEM ACCESS',passwordPlaceholder:'Authorization Key',unlockBtn:'UNLOCK TERMINAL',check:'CHECK',add:'ADD NEW',settings:'CONFIG',logs:'LOGS',logout:'LOGOUT',totalServices:'TOTAL SERVICES',expiringSoon:'EXPIRING SOON',expiredAlert:'EXPIRED / ALERT',serviceName:'SERVICE NAME',type:'TYPE',nextDue:'NEXT DUE',uptime:'UPTIME',lastRenew:'LAST RENEW',cyclePeriod:'CYCLE',actions:'ACTIONS',cycle:'CYCLE',reset:'RESET',disabled:'DISABLED',days:'DAYS',daysUnit:'DAYS',typeReset:'RESET',typeCycle:'CYCLE',lunarCal:'Lunar',lbOffline:'OFFLINE',unit:{day:'DAY',month:'MTH',year:'YR'},editService:'EDIT SERVICE',editLastRenewHint:'Please modify in History',newService:'NEW SERVICE',formName:'NAME',namePlaceholder:'e.g. Netflix',formType:'MODE',createDate:'CREATE DATE',interval:'INTERVAL',note:'NOTE',status:'STATUS',active:'ACTIVE',disabledText:'DISABLED',cancel:'CANCEL',save:'SAVE DATA',saveSettings:'SAVE CONFIG',settingsTitle:'SYSTEM CONFIG',setNotify:'NOTIFICATION',pushSwitch:'MASTER PUSH',pushUrl:'WEBHOOK URL',notifyThreshold:'ALERT THRESHOLD',setAuto:'AUTOMATION',autoRenewSwitch:'AUTO RENEW',autoRenewThreshold:'RENEW AFTER',autoDisableThreshold:'DISABLE AFTER',daysOverdue:'DAYS OVERDUE',sysLogs:'SYSTEM LOGS',execLogs:'EXECUTION LOGS',clearHistory:'CLEAR HISTORY',noLogs:'NO DATA',liveLog:'LIVE TERMINAL',btnExport: 'Export Data',btnImport: 'Import Data',btnTest: 'Send Test',btnRefresh:'REFRESH',last12M:'LAST 12M',
@@ -71,7 +89,7 @@ const Money = Coin;
             lblTopic: 'Topic',readOnly: 'Read-only',
             lblNotifyTime: 'Alarm Time', btnResetToken: 'RESET TOKEN',
             lblHeaders: 'Headers (JSON)', lblBody: 'Body (JSON)',
-            tag:{alert:'ALERT',renew:'RENEWED',disable:'DISABLED',normal:'NORMAL'},tagLatest:'LATEST',tagAuto:'AUTO',tagManual:'MANUAL',msg:{confirmRenew: 'Renew [%s] to today based on your timezone?',renewSuccess: 'Renewed! Date updated: %s -> %t',tokenReset: 'Token Reset. Update your calendar apps.', copyOk: 'Link Copied', exportSuccess: 'Backup Downloaded',importSuccess: 'Restore Success, Refreshing...',importFail: 'Import Failed, Check File Format',passReq:'Password Required',saved:'Data Saved',saveFail:'Save Failed',cleared:'Cleared',clearFail:'Clear Failed',loginFail:'Access Denied',loadLogFail:'Load Failed',confirmDel:'Confirm Delete?',dateError:'Last renew date cannot be earlier than create date',nameReq:'Name Required',nameExist:'Name already exists',futureError:'Renew date cannot be in the future',serviceDisabled:'Service Disabled',serviceEnabled:'Service Enabled',execFinish: 'EXECUTION FINISHED!'},tags:'TAGS',tagPlaceholder:'Press Enter to create tag',searchPlaceholder:'Search...',tagsCol:'TAGS',tagAll:'ALL',useLunar:'Lunar Cycle',lunarTip:'Calculate based on Lunar calendar',yes:'Yes',no:'No',timezone:'Timezone',disabledFilter:'DISABLED',policyConfig:'Policy Config',policyNotify:'Notify Days',policyAuto:'Auto Renew',policyRenewDay:'Renew Days',useGlobal:'Global Default',autoRenewOnDesc:'Auto Renew when overdue',autoRenewOffDesc:'Auto Disable when overdue',previewCalc:'Based on Last Renew Date & Interval',nextDue:'NEXT DUE',
+            tag:{alert:'ALERT',renew:'RENEWED',disable:'DISABLED',normal:'NORMAL'},tagLatest:'LATEST',tagAuto:'AUTO',tagManual:'MANUAL',msg:{confirmRenew: 'Renew [%s] to today based on your timezone?',renewSuccess: 'Renewed! Date updated: %s -> %t',tokenReset: 'Token Reset. Update your calendar apps.', copyOk: 'Link Copied', exportSuccess: 'Backup Downloaded',importSuccess: 'Restore Success, Refreshing...',importFail: 'Import Failed, Check File Format',passReq:'Password Required',saved:'Data Saved',saveFail:'Save Failed',cleared:'Cleared',clearFail:'Clear Failed',loginFail:'Access Denied',loadLogFail:'Load Failed',confirmDel:'Confirm Delete?',dateError:'Last renew date cannot be earlier than create date',nameReq:'Name Required',nameExist:'Name already exists',futureError:'Renew date cannot be in the future',serviceDisabled:'Service Disabled',serviceEnabled:'Service Enabled',execFinish: 'EXECUTION FINISHED!', rateFallback:'Network Error. Used default rates.'},tags:'TAGS',tagPlaceholder:'Press Enter to create tag',searchPlaceholder:'Search...',tagsCol:'TAGS',tagAll:'ALL',useLunar:'Lunar Cycle',lunarTip:'Calculate based on Lunar calendar',yes:'Yes',no:'No',timezone:'Timezone',disabledFilter:'DISABLED',policyConfig:'Policy Config',policyNotify:'Notify Days',policyAuto:'Auto Renew',policyRenewDay:'Renew Days',useGlobal:'Global Default',autoRenewOnDesc:'Auto Renew when overdue',autoRenewOffDesc:'Auto Disable when overdue',previewCalc:'Based on Last Renew Date & Interval',nextDue:'NEXT DUE',
             fixedPrice:'PRICE',currency:'Currency',defaultCurrency:'Default Currency',history:'History',historyTitle:'Renewal History',totalCost:'Total Cost',totalCount:'Total Count',renewDate:'Op Date',billPeriod:'Bill Period',startDate:'Start Date',endDate:'End Date',actualPrice:'Actual Price',notePlaceholder:'Optional note...',btnAddHist:'Add Record',modify:'Edit Channel',confirmDelHist:'Delete record?',opDate:'Op Date',amount:'Amount',period:'Period',spendingDashboard:'SPENDING DASHBOARD',monthlyBreakdown:'MONTHLY BREAKDOWN',total:'TOTAL',count:'COUNT',growth:'GROWTH',currMonth:'CURRENT',itemDetails:'ITEMS',noData:'NO DATA',predictedTag:'PREDICTED', lblPushTitle:'Push Title', pushTitle:'RenewHelper Report',
             addChannel: 'Add Channel', noChannels: 'No channels. Add one!', modifyChannel: 'Edit Channel', channelType: 'Type', channelName: 'Name', selectChannels: 'Notification Channels (Leave empty for All)'}
         };
@@ -1333,6 +1351,7 @@ const calculateCycleEndDate = (startDateStr, item) => {
     });                // --- Currency Exchange Rates ---
     const exchangeRates = ref({});
     const ratesLoading = ref(false);
+    const usingFallbackRates = ref(false);
 
     const fetchExchangeRates = async (baseCurrency) => {
         if (!baseCurrency) baseCurrency = 'CNY';
@@ -1343,6 +1362,7 @@ const calculateCycleEndDate = (startDateStr, item) => {
                 const p = JSON.parse(cached);
                 if (Date.now() - p.ts < 86400000) { // 24 hours cache
                     exchangeRates.value = p.data;
+                    usingFallbackRates.value = p.isFallback || false; // Restore fallback state from cache if possible, or assume false
                     return;
                 }
             }
@@ -1355,9 +1375,32 @@ const calculateCycleEndDate = (startDateStr, item) => {
                 const data = await res.json();
                 const rates = { ...data.rates, [baseCurrency]: 1 };
                 exchangeRates.value = rates;
-                localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: rates }));
+                usingFallbackRates.value = false;
+                localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: rates, isFallback: false }));
+            } else { throw new Error('API returns ' + res.status); }
+        } catch (e) { 
+            console.error('Failed to fetch exchange rates:', e);
+            // 兜底逻辑
+            const baseRate = FALLBACK_RATES[baseCurrency];
+            if (baseCurrency === FALLBACK_BASE || baseRate) {
+                const newRates = {};
+                // 如果请求的基准就是默认基准，直接使用
+                if (baseCurrency === FALLBACK_BASE) {
+                    Object.assign(newRates, FALLBACK_RATES);
+                } 
+                // 否则进行换算：Rate(X/Target) = Rate(X/Base) / Rate(Target/Base)
+                else {
+                    for (const [code, rate] of Object.entries(FALLBACK_RATES)) {
+                        newRates[code] = rate / baseRate;
+                    }
+                }
+                exchangeRates.value = newRates;
+                usingFallbackRates.value = true;
+                // Cache fallback rates too to avoid annoying retries, but maybe with shorter TTL? Keeping same for now.
+                localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: newRates, isFallback: true }));
+                // ElMessage removed as per user request
             }
-        } catch (e) { console.error('Failed to fetch exchange rates:', e); }
+        }
         ratesLoading.value = false;
     };
 
@@ -1996,10 +2039,19 @@ const calculateCycleEndDate = (startDateStr, item) => {
                 
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
                     <div class="mecha-panel p-6 pl-8 border-l-4 !border-l-blue-500">
-                        <div class="text-blue-600 text-xs font-bold font-mono mb-2 tracking-widest">{{ t('totalServices') }}</div>
+                        <div class="text-blue-600 text-xs font-bold font-mono mb-2 tracking-widest flex items-center gap-2">
+                            {{ t('totalServices') }}
+                        </div>
                         <div class="flex items-baseline gap-3">
                             <div class="text-5xl font-black font-mono text-textMain">{{ list.length }}</div>
-                            <div class="text-xs font-bold font-mono text-blue-600/60" v-if="list.length > 0">≈ {{ totalAmount }} {{ settings.defaultCurrency || 'CNY' }}</div>
+                            <div class="text-xs font-bold font-mono text-blue-600/60 flex items-center gap-1.5" v-if="list.length > 0">
+                                ≈ {{ totalAmount }} {{ settings.defaultCurrency || 'CNY' }}
+                                <el-tooltip v-if="usingFallbackRates !== undefined" :content="usingFallbackRates ? (lang==='zh'?'默认汇率':'Fallback Rate') : (lang==='zh'?'实时汇率':'Realtime Rate')" placement="top" :hide-after="0" :enterable="false">
+                                    <div class="flex items-center">
+                                        <el-icon :style="{ color: usingFallbackRates ? '#f59e0b' : '#10b981' }" class="cursor-help text-sm opacity-80 hover:opacity-100 transition-opacity"><component :is="usingFallbackRates ? WarningFilled : SuccessFilled" /></el-icon>
+                                    </div>
+                                </el-tooltip>
+                            </div>
                         </div>
                     </div>
                     <div class="mecha-panel p-6 pl-8 border-l-4 !border-l-amber-500">
