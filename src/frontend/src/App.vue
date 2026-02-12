@@ -10,7 +10,7 @@ import Lark from './components/icons/Lark.vue';
 import WeCom from './components/icons/WeCom.vue';
 
 // 图标解构
-const { Edit, Delete, Plus, VideoPlay, Setting, Bell, Document, Lock, Monitor, SwitchButton, Calendar, Timer, Files, AlarmClock, Warning, Search, Cpu, Upload, Download, Link, Connection, Message, Promotion, Iphone, Moon, Sunny, RefreshRight, More, ArrowDown, Tickets, Sort, ArrowLeft, ArrowRight, InfoFilled, Close, Coin, Position, Notification, Comment, SuccessFilled, WarningFilled } = ElementPlusIconsVue;
+const { Edit, Delete, Plus, VideoPlay, Setting, Bell, Document, Lock, Monitor, SwitchButton, Calendar, Timer, Files, AlarmClock, Warning, Search, Cpu, Upload, Download, Link, Connection, Message, Promotion, Iphone, Moon, Sunny, RefreshRight, More, ArrowDown, Tickets, Sort, ArrowLeft, ArrowRight, InfoFilled, Close, Coin, Position, Notification, Comment, SuccessFilled, WarningFilled, DocumentCopy } = ElementPlusIconsVue;
 
 // Element Plus 语言包
 const ZhCn = zhCn;
@@ -87,7 +87,7 @@ const messages = {
         lblHeaders: '请求头 (JSON)', lblBody: '消息体 (JSON)',
         tag: { alert: '触发提醒', renew: '自动续期', disable: '自动禁用', normal: '检查正常' }, tagLatest: '最新', tagAuto: '自动', tagManual: '手动', msg: { confirmRenew: '确认将 [%s] 的更新日期设置为今天吗？', renewSuccess: '续期成功！日期已更新: %s -> %t', tokenReset: '令牌已重置，请更新订阅地址', copyOk: '链接已复制', exportSuccess: '备份已下载', importSuccess: '数据恢复成功，即将刷新', importFail: '导入失败，请检查文件格式', passReq: '请输入密码', saved: '保存成功', saveFail: '保存失败', cleared: '已清空', clearFail: '清空失败', loginFail: '验证失败', loadLogFail: '日志加载失败', confirmDel: '确认删除此项目?', dateError: '上次更新日期不能早于创建日期', nameReq: '服务名称不能为空', nameExist: '服务名称已存在', futureError: '上次续期不能是未来时间', serviceDisabled: '服务已停用', serviceEnabled: '服务已启用', execFinish: '执行完毕!', rateFallback: 'API请求失败，已使用默认汇率' }, tags: '标签', tagPlaceholder: '输入标签回车创建', searchPlaceholder: '搜索标题或备注...', tagsCol: '标签', tagAll: '全部', useLunar: '农历周期', lunarTip: '按农历日期计算周期', yes: '是', no: '否', timezone: '偏好时区', disabledFilter: '已停用', policyConfig: '自动化策略', policyNotify: '提醒提前期', policyAuto: '自动续期', policyRenewDay: '过期续期天数', useGlobal: '全局默认', autoRenewOnDesc: '过期自动续期', autoRenewOffDesc: '过期自动禁用', previewCalc: '根据上次续期日期和周期计算', nextDue: '下次到期',
         fixedPrice: '账单额', currency: '币种', defaultCurrency: '默认币种', history: '历史记录', historyTitle: '续费历史', totalCost: '总花费', totalCount: '续费次数', renewDate: '操作日期', billPeriod: '账单周期', startDate: '开始日期', endDate: '结束日期', actualPrice: '实付金额', notePlaceholder: '可选备注...', btnAddHist: '补录历史', modify: '修改渠道', confirmDelHist: '删除此记录?', opDate: '操作日', amount: '金额', period: '周期', spendingDashboard: '花销看板', monthlyBreakdown: '月度明细', total: '总计', count: '笔', growth: '环比', currMonth: '本月', avgMonthlyLabel: '月均支出', itemDetails: '项目明细', noData: '暂无数据', predictedTag: '预测', last12M: '最近12个月', lblPushTitle: '自定义标题', pushTitle: 'RenewHelper 报告',
-        addChannel: '添加渠道', noChannels: '暂无推送渠道，请点击右上角添加。', modifyChannel: '配置渠道', channelType: '渠道类型', channelName: '渠道名称 (备注)', selectChannels: '选择推送渠道 (留空则默认推送所有)'
+        addChannel: '添加渠道', noChannels: '暂无推送渠道，请点击右上角添加。', modifyChannel: '配置渠道', channelType: '渠道类型', channelName: '渠道名称 (备注)', selectChannels: '选择推送渠道 (留空则默认推送所有)', delete: '删除'
     },
     en: {
         upcomingBillsDays: 'Pending Reminder', upcomingBills: '%s Days Pending', viewSwitch: 'VIEW SWITCH', viewProjects: 'PROJECTS', viewSpending: 'DASHBOARD', annualSummary: 'Annual Summary', monthlyTrend: 'Monthly Trend', noSpendingData: 'No Spending Data', billAmount: 'BILL AMOUNT', opSpending: 'ACTUAL COST', avgMonthly: 'AVG', avgMonthlyLabel: 'AVG MONTHLY', filter: { expired: 'Overdue/Today', w7: 'Within %s Days', w30: 'Within 30 Days', future: 'Future(>30d)', new: 'New (<30d)', stable: 'Stable (1m-1y)', long: 'Long Term (>1y)', m1: 'Last Month', m6: 'Last 6 Months', year: 'This Year', earlier: 'Earlier' }, secPref: 'PREFERENCES', manualRenew: 'Quick Renew', tipToggle: 'Toggle Status', tipRenew: 'Quick Renew', tipEdit: 'Edit Service', tipDelete: 'Delete Service', tipDeleteCh: 'Delete Channel', secNotify: 'NOTIFICATIONS', secData: 'DATA MANAGEMENT', lblIcsTitle: 'CALENDAR SUBSCRIPTION', lblIcsUrl: 'ICS URL (iOS/Google Calendar)', btnCopy: 'COPY', btnResetToken: 'RESET TOKEN', loginTitle: 'SYSTEM ACCESS', passwordPlaceholder: 'Authorization Key', unlockBtn: 'UNLOCK TERMINAL', check: 'CHECK', add: 'ADD NEW', settings: 'CONFIG', logs: 'LOGS', logout: 'LOGOUT', totalServices: 'TOTAL SERVICES', expiringSoon: 'EXPIRING SOON', expiredAlert: 'EXPIRED / ALERT', serviceName: 'SERVICE NAME', type: 'TYPE', nextDue: 'NEXT DUE', uptime: 'UPTIME', lastRenew: 'LAST RENEW', cyclePeriod: 'CYCLE', actions: 'ACTIONS', cycle: 'CYCLE', reset: 'RESET', disabled: 'DISABLED', days: 'DAYS', daysUnit: 'DAYS', typeReset: 'RESET', typeCycle: 'CYCLE', lunarCal: 'Lunar', lbOffline: 'OFFLINE', unit: { day: 'DAY', month: 'MTH', year: 'YR' }, editService: 'EDIT SERVICE', editLastRenewHint: 'Please modify in History', newService: 'NEW SERVICE', formName: 'NAME', namePlaceholder: 'e.g. Netflix', formType: 'MODE', createDate: 'CREATE DATE', interval: 'INTERVAL', note: 'NOTE', status: 'STATUS', active: 'ACTIVE', disabledText: 'DISABLED', cancel: 'CANCEL', save: 'SAVE DATA', saveSettings: 'SAVE CONFIG', settingsTitle: 'SYSTEM CONFIG', setNotify: 'NOTIFICATION', pushSwitch: 'MASTER PUSH', pushUrl: 'WEBHOOK URL', notifyThreshold: 'ALERT THRESHOLD', setAuto: 'AUTOMATION', autoRenewSwitch: 'AUTO RENEW', autoRenewThreshold: 'RENEW AFTER', autoDisableThreshold: 'DISABLE AFTER', daysOverdue: 'DAYS OVERDUE', sysLogs: 'SYSTEM LOGS', execLogs: 'EXECUTION LOGS', clearHistory: 'CLEAR HISTORY', noLogs: 'NO DATA', liveLog: 'LIVE TERMINAL', btnExport: 'Export Data', btnImport: 'Import Data', btnTest: 'Send Test', btnRefresh: 'REFRESH', last12M: 'LAST 12M',
@@ -99,7 +99,7 @@ const messages = {
         lblHeaders: 'Headers (JSON)', lblBody: 'Body (JSON)',
         tag: { alert: 'ALERT', renew: 'RENEWED', disable: 'DISABLED', normal: 'NORMAL' }, tagLatest: 'LATEST', tagAuto: 'AUTO', tagManual: 'MANUAL', msg: { confirmRenew: 'Renew [%s] to today based on your timezone?', renewSuccess: 'Renewed! Date updated: %s -> %t', tokenReset: 'Token Reset. Update your calendar apps.', copyOk: 'Link Copied', exportSuccess: 'Backup Downloaded', importSuccess: 'Restore Success, Refreshing...', importFail: 'Import Failed, Check File Format', passReq: 'Password Required', saved: 'Data Saved', saveFail: 'Save Failed', cleared: 'Cleared', clearFail: 'Clear Failed', loginFail: 'Access Denied', loadLogFail: 'Load Failed', confirmDel: 'Confirm Delete?', dateError: 'Last renew date cannot be earlier than create date', nameReq: 'Name Required', nameExist: 'Name already exists', futureError: 'Renew date cannot be in the future', serviceDisabled: 'Service Disabled', serviceEnabled: 'Service Enabled', execFinish: 'EXECUTION FINISHED!', rateFallback: 'Network Error. Used default rates.' }, tags: 'TAGS', tagPlaceholder: 'Press Enter to create tag', searchPlaceholder: 'Search...', tagsCol: 'TAGS', tagAll: 'ALL', useLunar: 'Lunar Cycle', lunarTip: 'Calculate based on Lunar calendar', yes: 'Yes', no: 'No', timezone: 'Timezone', disabledFilter: 'DISABLED', policyConfig: 'Policy Config', policyNotify: 'Notify Days', policyAuto: 'Auto Renew', policyRenewDay: 'Renew Days', useGlobal: 'Global Default', autoRenewOnDesc: 'Auto Renew when overdue', autoRenewOffDesc: 'Auto Disable when overdue', previewCalc: 'Based on Last Renew Date & Interval', nextDue: 'NEXT DUE',
         fixedPrice: 'PRICE', currency: 'Currency', defaultCurrency: 'Default Currency', history: 'History', historyTitle: 'Renewal History', totalCost: 'Total Cost', totalCount: 'Total Count', renewDate: 'Op Date', billPeriod: 'Bill Period', startDate: 'Start Date', endDate: 'End Date', actualPrice: 'Actual Price', notePlaceholder: 'Optional note...', btnAddHist: 'Add Record', modify: 'Edit Channel', confirmDelHist: 'Delete record?', opDate: 'Op Date', amount: 'Amount', period: 'Period', spendingDashboard: 'SPENDING DASHBOARD', monthlyBreakdown: 'MONTHLY BREAKDOWN', total: 'TOTAL', count: 'COUNT', growth: 'GROWTH', currMonth: 'CURRENT', itemDetails: 'ITEMS', noData: 'NO DATA', predictedTag: 'PREDICTED', lblPushTitle: 'Push Title', pushTitle: 'RenewHelper Report',
-        addChannel: 'Add Channel', noChannels: 'No channels. Add one!', modifyChannel: 'Edit Channel', channelType: 'Type', channelName: 'Name', selectChannels: 'Notification Channels (Leave empty for All)'
+        addChannel: 'Add Channel', noChannels: 'No channels. Add one!', modifyChannel: 'Edit Channel', channelType: 'Type', channelName: 'Name', selectChannels: 'Notification Channels (Leave empty for All)', delete: 'Delete'
     }
 };
 const LUNAR = { info: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2, 0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6, 0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x055c0, 0x0ab60, 0x096d5, 0x092e0, 0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5, 0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0, 0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0, 0x0a2e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4, 0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0, 0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160, 0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252, 0x0d520], gan: '甲乙丙丁戊己庚辛壬癸'.split(''), zhi: '子丑寅卯辰巳午未申酉戌亥'.split(''), months: '正二三四五六七八九十冬腊'.split(''), days: '初一,初二,初三,初四,初五,初六,初七,初八,初九,初十,十一,十二,十三,十四,十五,十六,十七,十八,十九,二十,廿一,廿二,廿三,廿四,廿五,廿六,廿七,廿八,廿九,三十'.split(','), lYearDays(y) { let s = 348; for (let i = 0x8000; i > 0x8; i >>= 1)s += (this.info[y - 1900] & i) ? 1 : 0; return s + this.leapDays(y) }, leapDays(y) { if (this.leapMonth(y)) return (this.info[y - 1900] & 0x10000) ? 30 : 29; return 0 }, leapMonth(y) { return this.info[y - 1900] & 0xf }, monthDays(y, m) { return (this.info[y - 1900] & (0x10000 >> m)) ? 30 : 29 }, solar2lunar(y, m, d) { if (y < 1900 || y > 2100) return null; const base = new Date(1900, 0, 31), obj = new Date(y, m - 1, d); let offset = Math.round((obj - base) / 86400000); let ly = 1900, temp = 0; for (; ly < 2101 && offset > 0; ly++) { temp = this.lYearDays(ly); offset -= temp } if (offset < 0) { offset += temp; ly-- } let lm = 1, leap = this.leapMonth(ly), isLeap = false; for (; lm < 13 && offset > 0; lm++) { if (leap > 0 && lm === (leap + 1) && !isLeap) { --lm; isLeap = true; temp = this.leapDays(ly) } else { temp = this.monthDays(ly, lm) } if (isLeap && lm === (leap + 1)) isLeap = false; offset -= temp } if (offset === 0 && leap > 0 && lm === leap + 1) { if (isLeap) isLeap = false; else { isLeap = true; --lm } } if (offset < 0) { offset += temp; --lm } const ld = offset + 1, gIdx = (ly - 4) % 10, zIdx = (ly - 4) % 12; const yStr = this.gan[gIdx < 0 ? gIdx + 10 : gIdx] + this.zhi[zIdx < 0 ? zIdx + 12 : zIdx]; const mStr = (isLeap ? '闰' : '') + this.months[lm - 1] + '月'; return { year: ly, month: lm, day: ld, isLeap, yearStr: yStr, monthStr: mStr, dayStr: this.days[ld - 1], fullStr: yStr + '年' + mStr + this.days[ld - 1] } } };
@@ -1142,6 +1142,25 @@ const openSettings = () => {
     if (!settingsForm.value.channels) settingsForm.value.channels = [];
     settingsVisible.value = true;
 };
+const generateBackupKey = () => {
+    // 生成16位随机密钥，确保包含字母和数字
+    const chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    let key = '';
+    for (let i = 0; i < 16; i++) key += chars.charAt(Math.floor(Math.random() * chars.length));
+    // 强制确保至少有一个字母和一个数字
+    const letters = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz';
+    const digits = '23456789';
+    key = letters.charAt(Math.floor(Math.random() * letters.length)) + digits.charAt(Math.floor(Math.random() * digits.length)) + key.slice(2);
+    settingsForm.value.backupKey = key;
+};
+const copyBackupKey = async () => {
+    const key = settingsForm.value.backupKey;
+    if (!key) return ElMessage.warning(lang.value === 'zh' ? '密钥为空，请先生成或输入' : 'Key is empty');
+    try {
+        await navigator.clipboard.writeText(key);
+        ElMessage.success(lang.value === 'zh' ? '已复制到剪贴板' : 'Copied to clipboard');
+    } catch { ElMessage.error(lang.value === 'zh' ? '复制失败' : 'Copy failed'); }
+};
 const saveSettings = async (close = true) => {
     // Validate Backup Key
     const bk = settingsForm.value.backupKey;
@@ -2051,12 +2070,12 @@ const getChannelName = (type) => {
         notifyx: 'NotifyX',
         gotify: 'Gotify',
         ntfy: 'Ntfy',
-        resend: lang.value === 'zh' ? 'Resend (电子邮件)' : 'Resend (Email)',
-        webhook: lang.value === 'zh' ? '自定义Webhook' : 'Custom Webhook',
+        resend: lang.value === 'zh' ? 'Resend(邮件)' : 'Resend(Email)',
+        webhook: lang.value === 'zh' ? 'Webhook' : 'Webhook',
         serverchan3: lang.value === 'zh' ? 'Server酱·3' : 'ServerChan3',
-        dingtalk: lang.value === 'zh' ? '钉钉群机器人' : 'DingTalk Robot',
-        lark: lang.value === 'zh' ? '飞书群机器人' : 'Lark Robot',
-        wecom: lang.value === 'zh' ? '企业微信机器人' : 'WeCom Robot'
+        dingtalk: lang.value === 'zh' ? '钉钉机器人' : 'DingTalk Robot',
+        lark: lang.value === 'zh' ? '飞书机器人' : 'Lark Robot',
+        wecom: lang.value === 'zh' ? '企微机器人' : 'WeCom Robot'
     };
     return map[type] || type;
 };
@@ -2069,6 +2088,31 @@ const toggleChannelSelection = (id) => {
     const s = new Set(selectedChannelIds.value);
     if (s.has(id)) s.delete(id); else s.add(id);
     selectedChannelIds.value = Array.from(s);
+};
+
+// Select All / Inverse
+const isAllSelected = computed(() => {
+    const allIds = settingsForm.value.channels ? settingsForm.value.channels.map(c => c.id) : [];
+    return allIds.length > 0 && selectedChannelIds.value.length === allIds.length;
+});
+
+const isIndeterminate = computed(() => {
+    const allIds = settingsForm.value.channels ? settingsForm.value.channels.map(c => c.id) : [];
+    return selectedChannelIds.value.length > 0 && selectedChannelIds.value.length < allIds.length;
+});
+
+const toggleSelectAll = (val) => {
+    if (val) {
+        selectedChannelIds.value = settingsForm.value.channels ? settingsForm.value.channels.map(c => c.id) : [];
+    } else {
+        selectedChannelIds.value = [];
+    }
+};
+
+const inverseSelection = () => {
+    const allIds = settingsForm.value.channels ? settingsForm.value.channels.map(c => c.id) : [];
+    const current = new Set(selectedChannelIds.value);
+    selectedChannelIds.value = allIds.filter(id => !current.has(id));
 };
 
 const batchUpdateChannels = async (action) => {
@@ -2092,8 +2136,10 @@ const batchUpdateChannels = async (action) => {
     } else if (action === 'disable') {
         if (settingsForm.value.channels) settingsForm.value.channels.forEach(c => { if(ids.has(c.id)) c.enable = false; });
     }
-
-    await saveSettings();
+    
+    // Do NOT auto-save. Wait for user to click "Save Settings".
+    // await saveSettings(); 
+    //ElMessage.success(lang.value === 'zh' ? '批量操作已应用，请点击保存设置生效' : 'Batch operation applied. Click Save Settings to persist.');
 };
 
 const openAssignDialog = () => {
@@ -2133,7 +2179,6 @@ const submitAssign = async () => {
     list.value = newList;
     assignDialogVisible.value = false;
     selectedChannelIds.value = []; 
-    ElMessage.success(t('msg.saved'));
 };
 
 const openLink = (url) => { if (url) window.open(url, '_blank'); };
@@ -3038,12 +3083,12 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
 
                     <!-- NEW Channel Selection -->
                     <el-form-item :label="t('selectChannels')">
-                        <el-select v-model="form.notifyChannelIds" multiple filterable style="width:100%" size="large"
+                        <el-select v-model="form.notifyChannelIds" multiple filterable clearable collapse-tags :max-collapse-tags="3" collapse-tags-tooltip style="width:100%" size="large"
                             :placeholder="t('selectChannels')">
                             <el-option v-for="ch in (settings.channels || [])" :key="ch.id" :label="ch.name"
                                 :value="ch.id">
                                 <span style="float: left">{{ ch.name }}</span>
-                                <span style="float: right; color: #8492a6; font-size: 13px">{{ ch.type }}</span>
+                                <span style="float: right; color: #8492a6; font-size: 13px">{{ getChannelName(ch.type) }}</span>
                             </el-option>
                         </el-select>
                     </el-form-item>
@@ -3220,7 +3265,7 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                 class="mecha-panel !rounded-none settings-body-fix"
                 style="clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);"
                 :show-close="true">
-                <div class="flex h-[550px] text-left border-t border-slate-100 dark:border-slate-800">
+                <div class="flex h-[550px] text-left border-t border-slate-100 dark:border-slate-800 overflow-hidden">
                     <!-- Sidebar -->
                     <div
                         class="w-12 sm:w-28 bg-gray-50 dark:bg-slate-900/50 border-r border-gray-200 dark:border-slate-800 flex flex-col pt-4 shrink-0 transition-all duration-300">
@@ -3252,8 +3297,8 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
 
                     <!-- Content Area -->
                     <div
-                        class="flex-1 bg-white dark:bg-slate-900 flex flex-col h-full relative min-w-0 scrollbar-thin overflow-y-auto">
-                        <div class="flex-1 p-4">
+                        class="flex-1 bg-white dark:bg-slate-900 flex flex-col h-full relative min-w-0 overflow-hidden">
+                        <div class="flex-1 p-4 scrollbar-thin overflow-y-auto overflow-x-hidden">
                             <!-- 1. Preferences -->
                             <div v-if="activeTab === 'pref'" class="space-y-4">
                                 <h3
@@ -3323,13 +3368,40 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                                         {{ t('noChannels') }}
                                     </div>
 
-                                    <div v-else
-                                        class="border border-gray-100 dark:border-slate-700 rounded-lg overflow-hidden flex flex-col">
+                                    <div v-else>
+                                        <!-- Batch Toolbar -->
+                                        <!-- Batch Toolbar -->
+                                         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 p-2 bg-blue-50 dark:bg-blue-900/30 rounded border border-blue-100 dark:border-blue-800 transition-all gap-2 box-border w-full overflow-hidden">
+                                             <div class="flex items-center gap-2 flex-wrap">
+                                                 <el-checkbox :model-value="isAllSelected" @change="toggleSelectAll" :indeterminate="isIndeterminate">
+                                                     <span class="text-xs font-bold text-blue-600 dark:text-blue-400">{{ lang === 'zh' ? '全选' : 'Select All' }}</span>
+                                                 </el-checkbox>
+                                                 <el-button link type="primary" size="small" @click="inverseSelection" style="padding:0;">
+                                                     {{ lang === 'zh' ? '反选' : 'Inverse' }}
+                                                 </el-button>
+                                                 <span v-if="selectedChannelIds.length > 0" class="text-xs font-bold text-blue-600 dark:text-blue-400">
+                                                     ({{ selectedChannelIds.length }} {{ lang === 'zh' ? '已选' : 'Selected' }})
+                                                 </span>
+                                             </div>
+                                             
+                                             <div v-if="selectedChannelIds.length > 0" class="flex flex-wrap gap-2 w-full sm:w-auto">
+                                                 <el-button type="success" size="small" plain @click="batchUpdateChannels('enable')">{{ t('active') }}</el-button>
+                                                 <el-button type="warning" size="small" plain @click="batchUpdateChannels('disable')">{{ t('disabledText') }}</el-button>
+                                                 <el-button type="primary" size="small" @click="openAssignDialog">{{ lang === 'zh' ? '分配' : 'Assign' }}</el-button>
+                                                 <el-button type="danger" size="small" plain @click="batchUpdateChannels('delete')">{{ t('delete') }}</el-button>
+                                             </div>
+                                         </div>
+
+                                        <div class="border border-gray-100 dark:border-slate-700 rounded-lg overflow-hidden flex flex-col">
                                         <div>
                                             <div v-for="(ch, idx) in pagedChannels" :key="ch.id"
-                                                class="p-3 border-b border-gray-100 dark:border-slate-700 last:border-0 bg-white dark:bg-slate-800 flex items-center justify-between hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors group">
+                                                class="p-3 border-b border-gray-100 dark:border-slate-700 last:border-0 bg-white dark:bg-slate-800 flex items-center hover:bg-gray-50 dark:hover:bg-slate-700/30 transition-colors group">
+                                                <!-- Checkbox -->
+                                                <div class="mr-3">
+                                                    <el-checkbox :model-value="selectedChannelIds.includes(ch.id)" @change="toggleChannelSelection(ch.id)"></el-checkbox>
+                                                </div>
                                                 <!-- Left: Icon + Info -->
-                                                <div class="flex items-center gap-3 overflow-hidden">
+                                                <div class="flex items-center gap-3 overflow-hidden flex-1">
                                                     <div class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-slate-700 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0 text-base transition-all duration-300 relative"
                                                         :class="{ 'grayscale opacity-50': !ch.enable }">
                                                         <el-icon v-if="ch.type === 'telegram'">
@@ -3377,11 +3449,11 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                                                             class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-800"
                                                             :class="ch.enable ? 'bg-green-500' : 'bg-gray-400'"></span>
                                                     </div>
-                                                    <div class="flex flex-col">
+                                                    <div class="flex flex-col items-start text-left">
                                                         <div
                                                             class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
                                                             <span
-                                                                class="font-bold text-sm text-slate-700 dark:text-gray-200"
+                                                                class="font-bold text-sm text-slate-700 dark:text-gray-200 text-left"
                                                                 :class="{ 'text-gray-400 dark:text-gray-600': !ch.enable }">{{
                                                                     ch.name
                                                                 }}</span>
@@ -3453,6 +3525,8 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                                         </div>
                                     </div>
                                 </div>
+
+                                </div>
                             </div>
 
                             <!-- 3. Calendar -->
@@ -3503,6 +3577,14 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                                             <template #prefix><el-icon>
                                                     <Lock />
                                                 </el-icon></template>
+                                            <template #append>
+                                                <el-button :icon="RefreshRight" @click="generateBackupKey"
+                                                    :title="lang === 'zh' ? '随机生成密钥' : 'Generate Random Key'"
+                                                    style="margin: -1px; padding: 8px 10px; border-right: 1px solid var(--el-border-color);" />
+                                                <el-button :icon="DocumentCopy" @click="copyBackupKey"
+                                                    :title="lang === 'zh' ? '复制密钥' : 'Copy Key'"
+                                                    style="margin: -1px; padding: 8px 10px;" />
+                                            </template>
                                         </el-input>
                                         <div class="text-[10px] text-gray-400 mt-1">{{ lang === 'zh' ? '用于 /api/backup 接口的专用访问密钥，配置后可替代 JWT Token 使用。' : 'Dedicated key for /api/backup, can be used instead of JWT Token.' }}
                                         </div>
@@ -3554,7 +3636,7 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                         <div
                             class="p-3 border-t border-gray-100 dark:border-slate-800 flex justify-end gap-3 bg-gray-50/50 dark:bg-slate-900/50 shrink-0">
                             <el-button @click="settingsVisible = false">{{ t('cancel') }}</el-button>
-                            <el-button type="primary" @click="saveSettings">{{ t('saveSettings') }}</el-button>
+                            <el-button type="primary" @click="saveSettings(false)">{{ t('saveSettings') }}</el-button>
                         </div>
                     </div>
                 </div>
@@ -3982,6 +4064,27 @@ const openLink = (url) => { if (url) window.open(url, '_blank'); };
                             v-if="i === displayLogs.length - 1 && checking"></span>{{ line }}</div>
                     <div v-if="checking" class="terminal-line text-blue-400">WAITING FOR RESPONSE...</div>
                 </div>
+            </el-dialog>
+            <!-- Batch Assign Dialog -->
+            <el-dialog v-model="assignDialogVisible" :title="lang === 'zh' ? '批量分配渠道' : 'Batch Assign Channels'" width="500px" align-center class="mecha-panel">
+                <el-form :model="assignForm" label-position="top">
+                    <el-form-item :label="lang === 'zh' ? '选择目标服务' : 'Target Services'">
+                        <el-select v-model="assignForm.serviceIds" multiple filterable clearable collapse-tags :max-collapse-tags="3" collapse-tags-tooltip style="width:100%" :placeholder="lang === 'zh' ? '搜索并选择服务...' : 'Search & select services...'">
+                            <el-option v-for="item in list" :key="item.id" :label="item.name" :value="item.id"></el-option>
+                        </el-select>
+                    </el-form-item>
+                    <el-form-item :label="lang === 'zh' ? '分配策略' : 'Assignment Strategy'">
+                        <el-radio-group v-model="assignForm.strategy">
+                            <el-radio label="append">{{ lang === 'zh' ? '追加 (保留原有)' : 'Append (Keep existing)' }}</el-radio>
+                            <el-radio label="overwrite">{{ lang === 'zh' ? '覆盖 (替换原有)' : 'Overwrite (Replace existing)' }}</el-radio>
+                            <el-radio label="remove">{{ lang === 'zh' ? '移除 (从服务中删除)' : 'Remove (Delete from services)' }}</el-radio>
+                        </el-radio-group>
+                    </el-form-item>
+                </el-form>
+                <template #footer>
+                    <el-button @click="assignDialogVisible = false">{{ t('cancel') }}</el-button>
+                    <el-button type="primary" @click="submitAssign">{{ t('save') }}</el-button>
+                </template>
             </el-dialog>
         </el-config-provider>
     </div>
